@@ -61,17 +61,3 @@ async def get_users(
     session: AsyncSession = Depends(depends.get_session),
 ):
     return await jobs.get_all(session, limit=limit, skip=skip)
-
-
-# @router.post("/token")
-# async def login(
-#     form_data: OAuth2PasswordRequestForm = Depends(),
-#     session: AsyncSession = Depends(depends.get_session)
-#     ):
-#     user = await users.get_by_email(session, form_data.username)
-#     if not user:
-#         raise HTTPException(status_code=400, detail="Incorrect username or password")
-#     if not verify_password(form_data.password, user.password):
-#         raise HTTPException(status_code=400, detail="Incorrect username or password")
-#     token = jwt.encode(jsonable_encoder(user), SECRET_KEY, algorithm="HS256")
-#     return {"access_token": token, "token_type": "bearer"}

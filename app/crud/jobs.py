@@ -52,5 +52,10 @@ class JobsCRUD(BaseCRUD):
         result = await db.execute(query)
         return result.scalars().first()
 
+    async def get_by_user_id(self, db: AsyncSession, id: int):
+        query = select(Jobs).where(Jobs.user_id == id)
+        result = await db.execute(query)
+        return result.scalars().all()
+
 
 jobs = JobsCRUD()

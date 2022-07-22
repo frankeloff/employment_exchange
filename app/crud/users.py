@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from .base import BaseCRUD
+from .jobs import jobs
 
 
 class UsersCRUD(BaseCRUD):
@@ -43,6 +44,11 @@ class UsersCRUD(BaseCRUD):
         return db_object
 
     async def delete(self, db: AsyncSession, db_object: Users):
+        jobs_to_delete = await jobs.get_by_user_id(db, db_object.id)
+
+        for i in range(len(jobs_to_delete)):
+            await jobs.delete(db, db_object=jobs_to_delete[i])
+
         await db.delete(db_object)
         await db.commit()
         return True

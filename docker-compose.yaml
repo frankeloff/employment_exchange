@@ -7,8 +7,11 @@ services:
       POSTGRES_DSN: ${POSTGRES_DSN}
     depends_on:
      - database
+    volumes:
+      - ./app:/src/app:rw
     ports:
       - 8000:8000
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
   database:
     container_name: ee_database_project

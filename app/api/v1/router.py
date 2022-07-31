@@ -1,12 +1,13 @@
 import jwt
-from api import depends
-from core.const import SECRET_KEY
-from core.security import verify_password
-from crud.users import users
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.api import depends
+from app.core.const import SECRET_KEY
+from app.core.security import verify_password
+from app.crud.users import users
 
 from .endpoints import jobs, user
 

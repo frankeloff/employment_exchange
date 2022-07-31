@@ -1,16 +1,17 @@
 from typing import List
 
 import jwt
-from api import depends
-from core.const import SECRET_KEY
-from core.security import verify_password
-from crud.jobs import jobs
-from crud.users import users
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.security import OAuth2PasswordRequestForm
-from schemas.jobs import JobIn, JobOut
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.api import depends
+from app.core.const import SECRET_KEY
+from app.core.security import verify_password
+from app.crud.jobs import jobs
+from app.crud.users import users
+from app.schemas.jobs import JobIn, JobOut
 
 router = APIRouter()
 

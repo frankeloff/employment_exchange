@@ -1,10 +1,11 @@
 import datetime
 
 from fastapi.encoders import jsonable_encoder
-from models.jobs import Jobs
-from schemas.jobs import JobIn
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.models.jobs import Jobs
+from app.schemas.jobs import JobIn
 
 from .base import BaseCRUD
 

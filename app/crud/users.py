@@ -1,11 +1,12 @@
 import datetime
 
-from core.security import hash_password
 from fastapi.encoders import jsonable_encoder
-from models.users import Users
-from schemas.users import UserIn
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.core.security import hash_password
+from app.models.users import Users
+from app.schemas.users import UserIn
 
 from .base import BaseCRUD
 from .jobs import jobs

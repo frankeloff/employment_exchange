@@ -1,11 +1,12 @@
 from typing import List
 
-from api import depends
-from crud.users import users
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import EmailStr
-from schemas.users import UserIn, UserOut
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.api import depends
+from app.crud.users import users
+from app.schemas.users import UserIn, UserOut
 
 router = APIRouter()
 

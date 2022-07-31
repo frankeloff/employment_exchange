@@ -1,12 +1,13 @@
 from typing import AsyncGenerator
 
 import jwt
-from core.const import SECRET_KEY
-from core.security import oauth2_scheme
-from crud.users import users
-from database.database import engine
 from fastapi import Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.core.const import SECRET_KEY
+from app.core.security import oauth2_scheme
+from app.crud.users import users
+from app.database.database import engine
 
 
 async def get_session() -> AsyncGenerator:
